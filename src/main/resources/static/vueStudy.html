@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My first Vue app</title>
+    <script src="js/vue/vue.js"></script>
+    <meta charset="UTF-8">
+</head>
+<body>
+<!--ex1-->
+<div id="app">
+    {{ message }}
+</div>
+<!--ex2-->
+<div id="app-2">
+  <span v-bind:title="message">
+    鼠标悬停几秒钟查看此处动态绑定的提示信息！(v-bind,当鼠标悬停，会显示提示内容)
+  </span>
+</div>
+<!--ex3-->
+<div id="app-3">
+    <p v-if="seen">现在你看到我了(v-if是指定，会随着变量的值而实时变化)</p>
+</div>
+<!--ex4-->
+<div id="app-4">
+    <h1>循环遍历</h1>
+    <ol>
+        <li v-for="todo in todos">
+            {{ todo.text }}
+        </li>
+    </ol>
+</div>
+<!--ex5-->
+<div id="app-5">
+    <p>{{ message }}</p>
+    <input v-model="message"><br>
+    <button v-on:click="reverseMessage">逆转消息</button>
+</div>
+<!--ex6-->
+<div id="app-6">
+<ol>
+    <!-- 创建一个 todo-item 组件的实例 -->
+    <todo-item></todo-item>
+    <todo-item></todo-item>
+    <todo-item></todo-item>
+</ol>
+</div>
+<!--ex7-->
+<div id="app-7">
+    <ol>
+        <!--
+          现在我们为每个 todo-item 提供 todo 对象
+          todo 对象是变量，即其内容可以是动态的。
+          我们也需要为每个组件提供一个“key”，稍后再
+          作详细解释。
+        -->
+        <todo-item
+                v-for="item in groceryList"
+                v-bind:todo="item"
+                v-bind:key="item.id">
+        </todo-item>
+    </ol>
+</div>
+
+<!--必须放在后面-->
+<script src="vueStudy.js"></script>
+</body>
+</html>
